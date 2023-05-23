@@ -1,0 +1,58 @@
+
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    border-bottom: rgba(0, 0, 0, 0.318) 1px solid ;
+    
+    .logo{
+        background-image: url(../../public/medias/icon_logo.png);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 4rem;
+        height: 4rem;
+        transition: 300ms;
+        
+        &:hover{
+
+            transform: scale(1.1);
+        }
+    }
+
+
+    .linksContainer ul{
+        display: flex;
+        flex-direction: row;
+
+        li{
+            list-style-type: none;
+            margin: 0 1rem;
+            cursor: pointer;
+            transition: 400ms;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        
+
+    }
+
+
+
+    @media (min-width : 1024px) {
+        padding: 0.5rem 4rem;
+    }
+    @media (min-width : 1200px) {
+        padding: 0.5rem 7rem;
+    }
+
+
+}

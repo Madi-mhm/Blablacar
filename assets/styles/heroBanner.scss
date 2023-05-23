@@ -1,0 +1,39 @@
+.heroBanner{
+    width: 100%;
+    background-color: bisque ;
+    display: flex;
+    justify-content: center;
+
+    .heroBannerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3rem;
+        width: 60%;   
+        height: 20rem;   
+
+        .heroBannerTextContents{
+            background-color: aqua;           
+        }
+    
+        .heroBannerPic{
+            width: 100%;
+            height: 100%;
+            background-image: url(../../public/medias/heroBanner.svg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat; 
+        }
+    
+        @media (min-width : 678px) {
+            .heroBannerContainer{
+                width: 50%;
+            }
+            .heroBannerPic{
+                width: 50%;
+            }
+        }
+    }
+
+}
