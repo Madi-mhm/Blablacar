@@ -9,3 +9,4 @@
 import './styles/app.scss';
 import './styles/header.scss';
 import './styles/heroBanner.scss';
+import './styles/footer.scss';
