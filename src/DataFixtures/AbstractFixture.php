@@ -1,13 +1,13 @@
-<?php 
+<?php
 
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Faker\Factory; 
+use Faker\Factory;
 use Faker\Generator;
 
-
-abstract class AbstractFixture extends Fixture{
+abstract class AbstractFixture extends Fixture
+{
     protected Generator $faker;
 
     public function __construct()
@@ -15,6 +15,3 @@ abstract class AbstractFixture extends Fixture{
         $this->faker = Factory::create('fr_FR');
     }
 }
-
-?>
-

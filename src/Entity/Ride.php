@@ -16,10 +16,10 @@ class Ride
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255)]
     private ?string $departure = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255)]
     private ?string $destination = null;
 
     #[ORM\Column]
@@ -28,24 +28,22 @@ class Ride
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ride')]
-    private ?Reservation $reservation_ride = null;
-
-    #[ORM\ManyToOne(inversedBy: 'user_rides')]
+    #[ORM\ManyToOne(inversedBy: 'rides')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $driver = null;
+    private ?user $driver = null;
 
-   
+    #[ORM\ManyToMany(targetEntity: rule::class, inversedBy: 'rides')]
+    private Collection $rules;
 
     public function __construct()
     {
-        $this->rule = new ArrayCollection();
+        $this->rules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,29 +123,39 @@ class Ride
         return $this;
     }
 
-    public function getReservationRide(): ?Reservation
-    {
-        return $this->reservation_ride;
-    }
-
-    public function setReservationRide(?Reservation $reservation_ride): self
-    {
-        $this->reservation_ride = $reservation_ride;
-
-        return $this;
-    }
-
-    public function getDriver(): ?User
+    public function getDriver(): ?user
     {
         return $this->driver;
     }
 
-    public function setDriver(?User $driver): self
+    public function setDriver(?user $driver): self
     {
         $this->driver = $driver;
 
         return $this;
     }
 
-  
+    /**
+     * @return Collection<int, rule>
+     */
+    public function getRules(): Collection
+    {
+        return $this->rules;
+    }
+
+    public function addRule(rule $rule): self
+    {
+        if (!$this->rules->contains($rule)) {
+            $this->rules->add($rule);
+        }
+
+        return $this;
+    }
+
+    public function removeRule(rule $rule): self
+    {
+        $this->rules->removeElement($rule);
+
+        return $this;
+    }
 }

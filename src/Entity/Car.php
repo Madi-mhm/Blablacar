@@ -26,7 +26,7 @@ class Car
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
-    #[ORM\OneToOne(inversedBy: 'user_car', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'cars')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 
@@ -88,10 +88,11 @@ class Car
         return $this->owner;
     }
 
-    public function setOwner(User $owner): self
+    public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
 
         return $this;
     }
+
 }

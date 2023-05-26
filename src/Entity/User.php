@@ -49,11 +49,15 @@ class User
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Rule::class)]
     private Collection $user_rules;
 
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Car::class, orphanRemoval: true)]
+    private Collection $cars;
+
     public function __construct()
     {
         $this->user_reservation = new ArrayCollection();
         $this->user_rides = new ArrayCollection();
         $this->user_rules = new ArrayCollection();
+        $this->cars = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -246,6 +250,36 @@ class User
             // set the owning side to null (unless already changed)
             if ($userRule->getAuthor() === $this) {
                 $userRule->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Car>
+     */
+    public function getCars(): Collection
+    {
+        return $this->cars;
+    }
+
+    public function addCar(Car $car): self
+    {
+        if (!$this->cars->contains($car)) {
+            $this->cars->add($car);
+            $car->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCar(Car $car): self
+    {
+        if ($this->cars->removeElement($car)) {
+            // set the owning side to null (unless already changed)
+            if ($car->getOwner() === $this) {
+                $car->setOwner(null);
             }
         }
 
