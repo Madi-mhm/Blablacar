@@ -12,7 +12,7 @@ class RideController extends AbstractController
     public function index(): Response
     {
         return $this->render('pages/homePage.html.twig', [
-            'controller_name' => 'RideController',
+            'controller_name' => 'Home Page',
         ]);
     }
 
@@ -20,7 +20,7 @@ class RideController extends AbstractController
     public function booking(): Response
     {
         return $this->render('pages/booking.html.twig', [
-            'controller_name' => 'RideController',
+            'controller_name' => 'Booking Page',
         ]);
     }
 
@@ -28,7 +28,7 @@ class RideController extends AbstractController
     public function publish(): Response
     {
         return $this->render('pages/publish.html.twig', [
-            'controller_name' => 'RideController',
+            'controller_name' => 'Publish Page',
         ]);
     }
 
@@ -36,9 +36,10 @@ class RideController extends AbstractController
     public function login(): Response
     {
         return $this->render('pages/login.html.twig', [
-            'controller_name' => 'RideController',
+            'controller_name' => 'Login Page',
         ]);
     }
+
 
 
 }

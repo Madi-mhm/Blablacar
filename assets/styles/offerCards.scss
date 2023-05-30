@@ -1,0 +1,98 @@
+.cardContainer{
+    width: 15rem;
+    height: 20rem;
+    border-radius: 10px;
+    border: solid 1px rgba(0, 0, 0, 0.32);
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.344);
+    margin: 2rem;
+    padding: 5px;
+    background-color: #2ED1FF;
+
+
+    .card{
+        width: 100%;
+        height: 100%;
+        border: 0.5px solid rgba(0, 0, 0, 0.183);
+        border-radius: 10px;
+        background-color: white;
+
+        *{
+            margin: 0;
+        }
+
+        .upSide{
+            width: 100%;
+            height: 70%;
+            text-align: center;
+            
+            .cities{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 70%;
+
+
+                .From{
+                    margin-top: 15px ;
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+
+                .To{
+                    margin-top: 20px ;
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+
+                .departure{
+                    font-size: 14px;
+                }
+
+                .destination{
+                    font-size: 14px;
+                }
+            }
+
+            .price{
+                width: 100%;
+                background-color: #2ED1FF;
+                width: 6rem;
+                height: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 80%;
+                color: white;
+                margin: 0 auto;
+                
+                p{
+                    font-weight: bold;
+                }
+            }
+
+            
+        }
+
+        .downSide{
+            background-color: #2ed2ff;
+            width: 100%;
+            height: 30%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            box-sizing: border-box;
+
+            p{
+                font-size: 13px;
+            }
+
+            .profil{
+                width: 3.5rem;
+                height: 3.5rem;
+                background-color: yellowgreen;
+                border-radius: 50%;
+            }
+        }
+    }
+}
