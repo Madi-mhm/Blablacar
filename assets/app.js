@@ -11,3 +11,4 @@ import './styles/header.scss';
 import './styles/heroBanner.scss';
 import './styles/footer.scss';
 import './styles/offerCards.scss';
+import './styles/booking.scss';

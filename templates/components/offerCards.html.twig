@@ -1,25 +1,46 @@
 <div class="cardContainer">
+
     <div class="card">
-        <div class="upSide">
-            <div class="cities">
-                <p class="From">From:</p>
-                <div class="departure">
-                    <p>Chamebry</p>
-                </div>
-                <p class="To">To:</p>
-                <div class="destination">
-                    <p>Lyon</p>
-                </div>
-            </div>
-            <div class="price">
-                <p>16.00 $</p>
-            </div>
+
+        <div class="upSideLeft">  
+            <div class="departure"><span class="departLocation"></span>{{product.departure}}</div>      
+            <div class="destination"><span class="destinationLocation"></span>{{product.destination}}</div>  
+            <div class="places">{{product.seats}} seats disponible</div>          
         </div>
-        <div class="downSide">
-            <p>AccountNameis...</p>
-            <div class="profil"></div>
-        </div>
+
+        <div class="upSideRight">
+            <div class="date">21/05/23</div>  
+
+            <div class="profile">
+
+                <div class="account">
+                
+                    <div class="profilPic"></div>
+
+                    <div class="userName">
+                        <p>{{product.driver.firstName}} {{product.driver.lastName | upper}}</p>
+                        <p>4/7</p>
+                    </div>      
+
+                </div>
+
+                <p class="price">{{product.price}}$</p>
+            </div>
+
+        </div>   
+
     </div>
+    
+    <div class="downSide">
+        <ul>
+            {% for rule in product.rules %}
+               <li> {{rule.name}}</li>
+            {%endfor%}            
+        </ul>
+    </div>
+
 </div>
+
+
 
 

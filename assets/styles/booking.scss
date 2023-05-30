@@ -1,0 +1,11 @@
+.bodyDiv{
+    padding: 2rem;
+    
+
+    .bodyContainer{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
