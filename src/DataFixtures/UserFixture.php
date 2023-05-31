@@ -15,7 +15,6 @@ class UserFixture extends AbstractFixture
             $user = new User();
             $user->setEmail($this->faker->email());
             $user->setPassword($this->faker->password());
-            $user->setRoles($this->faker->word());
             $user->setFirstName($this->faker->firstName());
             $user->setLastName($this->faker->lastName());
             $user->setPhone(intval($this->faker->phoneNumber()));

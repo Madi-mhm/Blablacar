@@ -7,28 +7,33 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 150)]
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $roles = null;
-
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 80)]
     private ?string $first_name = null;
 
-    #[ORM\Column(length: 150)]
+    #[ORM\Column(length: 80)]
     private ?string $last_name = null;
 
     #[ORM\Column]
@@ -36,9 +41,6 @@ class User
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $created = null;
-
-    #[ORM\OneToOne(mappedBy: 'owner', cascade: ['persist', 'remove'])]
-    private ?Car $user_car = null;
 
     #[ORM\OneToMany(mappedBy: 'passenger', targetEntity: Reservation::class)]
     private Collection $user_reservation;
@@ -51,6 +53,7 @@ class User
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Car::class, orphanRemoval: true)]
     private Collection $cars;
+
 
     public function __construct()
     {
@@ -77,7 +80,47 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -89,16 +132,24 @@ class User
         return $this;
     }
 
-    public function getRoles(): ?string
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->roles;
+        return null;
     }
 
-    public function setRoles(string $roles): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->roles = $roles;
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getFirstName(): ?string
@@ -149,23 +200,6 @@ class User
         return $this;
     }
 
-    public function getUserCar(): ?Car
-    {
-        return $this->user_car;
-    }
-
-    public function setUserCar(Car $user_car): self
-    {
-        // set the owning side of the relation if necessary
-        if ($user_car->getOwner() !== $this) {
-            $user_car->setOwner($this);
-        }
-
-        $this->user_car = $user_car;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Reservation>
      */
@@ -195,7 +229,6 @@ class User
 
         return $this;
     }
-
     /**
      * @return Collection<int, Ride>
      */
@@ -225,7 +258,6 @@ class User
 
         return $this;
     }
-
     /**
      * @return Collection<int, Rule>
      */
@@ -255,7 +287,6 @@ class User
 
         return $this;
     }
-
     /**
      * @return Collection<int, Car>
      */
@@ -286,3 +317,4 @@ class User
         return $this;
     }
 }
+
