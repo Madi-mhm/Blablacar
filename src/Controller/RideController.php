@@ -28,6 +28,12 @@ class RideController extends AbstractController
         $productsRepository = $entityManager->getRepository(Ride::class);
         $products = $productsRepository->findAll();
 
+            
+        foreach ($products as $product) {
+            $createdString = $product->getCreated()->format('d-m-Y');
+            $product->createdString = $createdString;
+        }
+
         return $this->render('pages/booking.html.twig', [
             'controller_name' => 'Booking Page',
             'products' => $products,
