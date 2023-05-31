@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RideController extends AbstractController
 {
     #[Route('/', name: 'app_ride')]
-    public function index(): Response
+    public function homePage(): Response
     {
         return $this->render('pages/homePage.html.twig', [
             'controller_name' => 'Home Page',
@@ -42,7 +42,7 @@ class RideController extends AbstractController
         ]);
     }
 
-    #[Route('/login', name: 'login_page')]
+    #[Route('/', name: 'login_page')]
     public function login(): Response
     {
         return $this->render('pages/login.html.twig', [
