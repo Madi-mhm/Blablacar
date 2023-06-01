@@ -5,19 +5,19 @@
 
     <div class="detailsPage">
 
-        <h1>Jeudi. 25 mai</h1>
+        <h1>{{product.createdString}}</h1>
 
         <div class="detailsPageContainer">
 
             <div class="detailFirstSection">
                 <div class="timeOfTraject">
-                    <p>06h00</p>
+                    <p>00h00</p>
                     <p class="timeDuration">45 min</p>
-                    <p>06h45</p>
+                    <p>00h00</p>
                 </div>
                 <div class="citiesOfTraject">
-                    <p>Chambéry</p>
-                    <p>Grenoble</p>
+                    <p>{{product.departure}}</p>
+                    <p>{{product.destination}}</p>
                 </div>
             </div>
 
@@ -26,16 +26,37 @@
             <div class="detailsOfPrice">
                 <div class="detailsOfPriceContainer">
                     <p class="totalPriceText">Total price for a passenger</p>
-                    <p>6,00 €</p>
+                    <p> {{ product.price }} €</p>
                 </div>
             </div>
 
             <div class="emptyDiv"></div>
 
+            <div class="carSection">
+                <h2>Cars Details</h2>
+                <div class="carSectionContainer">
+                    <div class="carSectionDetails">
+                        <p>Brand : </p>
+                        <span>mvkdf</span>
+                    </div>
+                    <div class="carSectionDetails">
+                        <p>Model :</p>
+                        <span>dvsdsfv</span>
+                    </div>
+                    <div class="carSectionDetails">
+                        <p>Seats Disponible : </p>
+                        <span>sdvsdv</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emptyDiv"></div>
+
+
             <div class="detailsFotter">
                 <div class="detailsProfileSection">
                     <div class="detailsUserName">
-                        <p>Mahdi-MHM</p>
+                        <p>{{product.driver.firstName}} {{product.driver.lastName | upper}} > </p>
                         <p class="feedback">⭐ 4/7 - 28 Avis</p>
                     </div>
 
@@ -45,13 +66,15 @@
                 </div>
 
                 <div class="detailsDescription">
-                    <p>Un système d’authentification permet à l’utilisateur de s’inscrire sur la plateforme, de ce fait certaines pages sont accessibles ou non à l’utilisateur selon son statut.</p>
+                    {% for rule in product.rules %}
+                        <p>{{rule.description}}</p>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="detailsContact">
                 <a><div></div></a>
-                <p>CONTACT Mhdi-mhm</p>
+                <a class="contactLink" href="{{path('app_login')}}"><p>CONTACT {{product.driver.firstName}} {{product.driver.lastName | upper}}</p></a>
             </div>
             
         </div>

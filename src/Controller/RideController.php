@@ -48,23 +48,27 @@ class RideController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'login_page')]
-    public function login(): Response
+    #[Route('/details/announce/{id}', name: 'details_page')]     
+    public function details(EntityManagerInterface $entityManager, string $id): Response              
     {
-        return $this->render('pages/login.html.twig', [
-            'controller_name' => 'Login Page',
-        ]);
-    }
+        $productsRepository = $entityManager->getRepository(Ride::class);
+        $product = $productsRepository->findOneBy(['id' => $id]);
 
-    #[Route('/details', name: 'details_page')]
-    public function details(): Response
-    {
+        if(!$product){
+            return $this->render('components/cardsDetails.html.twig');
+        }
+
+        
+        $createdString = $product->getCreated()->format('l. d F');
+        $product->createdString = $createdString;
+        
+
         return $this->render('components/cardsDetails.html.twig', [
-            'controller_name' => 'Login Page',
+            'controller_name' => 'details_page',
+            'product' => $product,                        
         ]);
+
+        
     }
-
-
 
 }
-
