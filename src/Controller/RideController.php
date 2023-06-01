@@ -56,6 +56,14 @@ class RideController extends AbstractController
         ]);
     }
 
+    #[Route('/details', name: 'details_page')]
+    public function details(): Response
+    {
+        return $this->render('components/cardsDetails.html.twig', [
+            'controller_name' => 'Login Page',
+        ]);
+    }
+
 
 
 }
