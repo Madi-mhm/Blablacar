@@ -1,0 +1,69 @@
+.profileModificationForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    .formContainer{
+        width: 25rem;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        margin: 3rem 0 7rem 0;
+        padding: 0 2rem;
+        border-radius: 10px;
+        text-align: center;
+
+        h1{
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .profileModificationFormSection{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            label{
+                margin-bottom: 5px;
+                font-size: 14px;
+            }
+
+            input{
+                min-width: 95%;
+                height: 2rem;
+                padding: 0 10px;
+                border: rgba(0, 0, 0, 0.377) solid 1px;
+                outline: none;
+                border-radius: 5px;
+                margin-bottom: 15px;
+
+                &:focus{
+                    border: solid 3px #2ED1FF;
+                }
+
+            }
+
+            
+        }
+
+        .btn{
+            padding: 10px 15px;
+            background-color: #00c8ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: 250ms;
+            margin: 1rem 0 2rem 0;
+            font-weight: bold;
+            float: right;
+
+            &:hover{
+                transform: scale(1.05);
+                
+            }
+        }
+
+
+
+
+    }
+}
