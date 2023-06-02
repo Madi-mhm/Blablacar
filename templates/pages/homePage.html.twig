@@ -1,21 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body%}
-    <div class="heroBanner">
-        <div class="heroBannerContainer">
-            <div class="heroBannerTextContents">
-                <h1>Bus or carpool? </br>
-                    Your pick of rides at low prices.</h1>
-                <p>They are very soft and don't leave anywhere there is any pain. He likes to take care of his family.</p>
-                <div>
-                <button class="registerButton">Login</button>
-                <button class="joinButton">Join now!</button>
-                </div>
-            </div>
-            <div class="heroBannerPic">
-                <div class="img">
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock%} 
+<div class="heroBanner">
+	<div class="heroBannerContainer">
+		<div class="heroBannerTextContents">
+			<h1>Bus or carpool?
+			</br>
+			Your pick of rides at low prices.</h1>
+		<p>They are very soft and don't leave anywhere there is any pain. He likes to take care of his family.</p>
+		<div>
+			{% if not app.user %}
+				<a href="{{path('app_login')}}" class="homePageBtn">
+					<button class="registerButton">Login</button>
+				</a>
+				<a href="{{path('app_register')}}" class="homePageBtn">
+					<button class="joinButton">Join now!</button>
+				</a>
+			{% endif %}
+
+		</div>
+	</div>
+	<div class="heroBannerPic">
+		<div class="img"></div>
+	</div>
+</div></div>{% endblock%}

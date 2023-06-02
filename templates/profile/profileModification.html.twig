@@ -1,57 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}modify{% endblock %}
+{% block title %}modify
+{% endblock %}
 
 {% block body %}
 
-    <div class="profileModificationForm">
-
-        <div class="formContainer">
-
-            <h1>Modify Your Profile</h1>
-
-            {{ form_start(profileModificationForm) }}
-
-                <div class="profileModificationFormSection">
-                    {{ form_label(profileModificationForm.email) }}
-                    {{ form_errors(profileModificationForm.email) }}
-                    {{ form_widget(profileModificationForm.email) }}
-                    {{ form_help(profileModificationForm.email) }}
-                </div>
-
-                <div class="profileModificationFormSection">
-                    {{ form_label(profileModificationForm.password) }}
-                    {{ form_errors(profileModificationForm.password) }}
-                    {{ form_widget(profileModificationForm.password) }}
-                    {{ form_help(profileModificationForm.password) }}
-                </div>
-
-                <div class="profileModificationFormSection">
-                    {{ form_label(profileModificationForm.first_name) }}
-                    {{ form_errors(profileModificationForm.first_name) }}
-                    {{ form_widget(profileModificationForm.first_name) }}
-                    {{ form_help(profileModificationForm.first_name) }}
-                </div>
-
-                <div class="profileModificationFormSection">
-                    {{ form_label(profileModificationForm.last_name) }}
-                    {{ form_errors(profileModificationForm.last_name) }}
-                    {{ form_widget(profileModificationForm.last_name) }}
-                    {{ form_help(profileModificationForm.last_name) }}
-                </div>
-
-                <div class="profileModificationFormSection">
-                    {{ form_label(profileModificationForm.phone) }}
-                    {{ form_errors(profileModificationForm.phone) }}
-                    {{ form_widget(profileModificationForm.phone) }}
-                    {{ form_help(profileModificationForm.phone) }}
-                </div>
+	<form class="profileModificationForm" method="POST" action="{{path('app_profileModification')}}">
 
 
-                <button type="submit" class="btn">Submit</button>
+		<div class="formContainer">
 
-            {{ form_end(profileModificationForm) }}
+			<h1>Modify Your Profile</h1>
 
-        </div>
-    </div>
+			{{ form_start(profileModificationForm) }}
+
+			<div class="profileModificationFormSection">
+				{{ form_label(profileModificationForm.email) }}
+				{{ form_errors(profileModificationForm.email) }}
+				{{ form_widget(profileModificationForm.email) }}
+				{{ form_help(profileModificationForm.email) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(profileModificationForm.password) }}
+				{{ form_errors(profileModificationForm.password) }}
+				{{ form_widget(profileModificationForm.password) }}
+				{{ form_help(profileModificationForm.password) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(profileModificationForm.first_name) }}
+				{{ form_errors(profileModificationForm.first_name) }}
+				{{ form_widget(profileModificationForm.first_name) }}
+				{{ form_help(profileModificationForm.first_name) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(profileModificationForm.last_name) }}
+				{{ form_errors(profileModificationForm.last_name) }}
+				{{ form_widget(profileModificationForm.last_name) }}
+				{{ form_help(profileModificationForm.last_name) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(profileModificationForm.phone) }}
+				{{ form_errors(profileModificationForm.phone) }}
+				{{ form_widget(profileModificationForm.phone) }}
+				{{ form_help(profileModificationForm.phone) }}
+			</div>
+
+
+			<button type="submit" class="btn">Submit</button>
+
+			{{ form_end(profileModificationForm) }}
+
+		</div>
+	</form>
 {% endblock %}
