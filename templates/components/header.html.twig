@@ -1,18 +1,38 @@
 <nav>
-    <a href={{ path('app_ride')}} ><div class="logo"></div></a>
-    <div class="linksContainer">
-        <ul>
-            <a href="{{ path('booking_page') }}"><li>Book a Ride</li></a>
-            <a href="{{ path('publish_page')}}"><li>Publish a Ride</li></a>
+	<a href={{ path('app_ride')}}>
+		<div class="logo"></div>
+	</a>
+	<div class="linksContainer">
+		<ul>
+			<a href="{{ path('booking_page') }}">
+				<li>Book a Ride</li>
+			</a>
+			<a href="{{ path('publish_page')}}">
+				<li>Publish a Ride</li>
+			</a>
 
-            {% if not app.user%}
-                <a href="{{ path('app_login')}}"><li>Login</li></a>
-            {% endif %}
-            {% if app.user %}
-                <a href="{{ path('app_profile')}}"><li>Profile</li></a>
-                <a href="{{ path('app_logout')}}"><li>Logout</li></a>
-            {% endif %}
+			{% if not app.user%}
+				<a href="{{ path('app_login')}}">
+					<li>Login</li>
+				</a>
+			{% endif %}
+			{% if app.user %}
 
-        </ul>
-    </div>
+				<div class="dropdown">
+					<span>More</span>
+					<div class="dropdown-content">
+						<a href="{{path('app_profile')}}">
+							<li>Profile</li>
+						</a>
+						<a href="{{path('app_logout')}}">
+							<li>Logout</li>
+						</a>
+					</div>
+				</div>
+
+
+			{% endif %}
+
+		</ul>
+	</div>
 </nav>

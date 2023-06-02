@@ -72,8 +72,13 @@ class ProfileController extends AbstractController
     #[Route('/profile/carModification', name: 'app_carModification')]
     public function carModification(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $car = new Car();
 
+        // Identify user's ID for future actions 
+        $userRepo = $entityManager->getRepository(User::class);
+        $user = $userRepo->find($this->getUser()->getId());
+
+
+        $car = new Car();
         $form = $this->createForm(carModificationType::class, $car);
         $form->handleRequest($request);
 
