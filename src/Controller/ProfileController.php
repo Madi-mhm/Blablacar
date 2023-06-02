@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Car;
 use App\Form\ProfileModificationType;
+use App\Form\CarModificationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -62,11 +64,23 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-
-
-
         return $this->render('profile/ProfileModification.html.twig', [
             'profileModificationForm' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/profile/carModification', name: 'app_carModification')]
+    public function carModification(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $car = new Car();
+
+        $form = $this->createForm(carModificationType::class, $car);
+        $form->handleRequest($request);
+
+
+
+        return $this->render('profile/carModification.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

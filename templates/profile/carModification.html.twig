@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}modify
+{% endblock %}
+{% block body %}
+
+	<form class="profileModificationForm" method="POST" action="{{path('app_profile')}}">
+
+
+		<div class="formContainer">
+
+			<h1>Modify Your Car Profile</h1>
+
+			{{ form_start(form) }}
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.brand) }}
+				{{ form_errors(form.brand) }}
+				{{ form_widget(form.brand) }}
+				{{ form_help(form.brand) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.seats) }}
+				{{ form_errors(form.seats) }}
+				{{ form_widget(form.seats) }}
+				{{ form_help(form.seats) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.model) }}
+				{{ form_errors(form.model) }}
+				{{ form_widget(form.model) }}
+				{{ form_help(form.model) }}
+			</div>
+			<button type="submit" class="btn">Submit</button>
+
+			{{ form_end(form) }}
+
+		</div>
+	</form>
+{% endblock %}

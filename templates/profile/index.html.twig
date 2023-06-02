@@ -3,26 +3,42 @@
 
 {% block body %}
 
-    <div class="profileBody">
-        <div class="profileContainer">
-            <div class="profileLeftContainer">
+	<div class="profileBody">
+		<div class="profileContainer">
+			<div class="profileLeftContainer">
 
-                <div class="profileSectionUserName">
-                    <div class="profilePic"></div>
-                    <p>@mahdi_mhm</p>
-                </div>
+				<div class="profileSectionUserName">
+					<div class="profilePic"></div>
+					<p>@mahdi_mhm</p>
+				</div>
 
-                <div class="profileSectionLinks">
-                    <a href="{{path('app_profileModification')}}"><div class="profileLinks"><p>Modify my profile</p></div></a>
-                    <a href=""><div class="profileLinks"><p>Modify my car</p></div></a>
-                    <a href=""><div class="profileLinks"><p>Create an announce</p></div></a>
-                    <a href=""><div class="profileLinks"><p>Create a carpool rule</p></div></a>
-                </div>
-                <div class="profileSore">
-                    <p>⭐ 4/7</p>
-                </div>
-            </div>
-            <div class="profileRightContainer"></div>
-        </div>
-    </div>
+				<div class="profileSectionLinks">
+					<a href="{{path('app_profileModification')}}">
+						<div class="profileLinks">
+							<p>Modify my profile</p>
+						</div>
+					</a>
+					<a href="{{path('app_carModification')}}">
+						<div class="profileLinks">
+							<p>Modify my car</p>
+						</div>
+					</a>
+					<a href="">
+						<div class="profileLinks">
+							<p>Create an announce</p>
+						</div>
+					</a>
+					<a href="">
+						<div class="profileLinks">
+							<p>Create a carpool rule</p>
+						</div>
+					</a>
+				</div>
+				<div class="profileSore">
+					<p>⭐ 4/7</p>
+				</div>
+			</div>
+			<div class="profileRightContainer"></div>
+		</div>
+	</div>
 {% endblock %}

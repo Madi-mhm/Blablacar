@@ -46,7 +46,7 @@
 
         .btn{
             padding: 10px 15px;
-            background-color: #00c8ff;
+            background-color: #2683ed;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -57,7 +57,9 @@
             float: right;
 
             &:hover{
-                transform: scale(1.05);
+                transform: scale(1.04);
+                background-color: #438adb;
+
                 
             }
         }
