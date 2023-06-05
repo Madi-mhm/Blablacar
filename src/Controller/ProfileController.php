@@ -7,7 +7,7 @@ use App\Entity\Car;
 use App\Entity\Ride;
 use App\Entity\Rule;
 use App\Form\ProfileModificationType;
-use App\Form\AnnounceType;
+use App\Form\CreateAnnounceType;
 use App\Form\CarModificationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,17 +90,60 @@ class ProfileController extends AbstractController
         $userRepo = $entityManager->getRepository(User::class);
         $user = $userRepo->find($this->getUser()->getId());
 
-
         $car = new Car();
         $form = $this->createForm(carModificationType::class, $car);
         $form->handleRequest($request);
-
-
 
         return $this->render('profile/carModification.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
+    #[Route('/profile/createAnnounce', name: 'app_createAnnounce')]
+    public function index(Request $request, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $ride = new Ride();
+
+        $form = $this->createForm(CreateAnnounceType::class, $ride);
+
+		// Ecoute la soumission du formulaire
+		$form->handleRequest($request);
+
+		// Condition valide lorsque le formulaire est soumis et valide
+        
+		// Persiste les données du formulaire dans l'entité Demo
+        // $ride = $form->getData();
+        
+        // $ride->setCreated(new \DateTime());
+        
+        // Exécuter la logique que vous souhaitez
+        // par exemple enregistrer la nouvelle entité en base de données
+
+
+        
+        if($form->isSubmitted() && $form->isValid()){
+
+            $ride = $form->getData();
+
+          
+            $ride->setCreated(new \DateTime());
+
+             
+
+            $userId = $this->getUser()->getId();
+            $driver = $entityManagerInterface->getRepository(User::class)->find($userId);
+            $ride->setDriver($driver);
+
+            $entityManagerInterface->persist($ride);
+            $entityManagerInterface->flush();
+        }
+
+
+        return $this->render('profile/createAnnounce.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 
 }
+

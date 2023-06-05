@@ -123,6 +123,7 @@ class Ride
         return $this;
     }
 
+
     public function getDriver(): ?user
     {
         return $this->driver;

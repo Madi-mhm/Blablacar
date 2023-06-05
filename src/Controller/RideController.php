@@ -38,15 +38,7 @@ class RideController extends AbstractController
             'controller_name' => 'Booking Page',
             'products' => $products,
         ]);
-    }
-
-    #[Route('/publish', name: 'publish_page')]
-    public function publish(): Response
-    {
-        return $this->render('pages/publish.html.twig', [
-            'controller_name' => 'Publish Page',
-        ]);
-    }
+    }   
 
     #[Route('/details/announce/{id}', name: 'details_page')]     
     public function details(EntityManagerInterface $entityManager, string $id): Response              

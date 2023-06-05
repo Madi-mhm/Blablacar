@@ -1,3 +1,65 @@
-{# {{form_start(form)}}
-{{ form_row(form.rules, { 'choices': rules }) }}
-{{form_end(form)}} #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify
+{% endblock %}
+
+{% block body %}
+
+	<form class="profileModificationForm" method="POST" action="{{path('app_createAnnounce')}}">
+
+
+		<div class="formContainer">
+
+			<h1>Create a Ride</h1>
+
+			{{ form_start(form) }}
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.departure) }}
+				{{ form_errors(form.departure) }}
+				{{ form_widget(form.departure) }}
+				{{ form_help(form.departure) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.destination) }}
+				{{ form_errors(form.destination) }}
+				{{ form_widget(form.destination) }}
+				{{ form_help(form.destination) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.seats) }}
+				{{ form_errors(form.seats) }}
+				{{ form_widget(form.seats) }}
+				{{ form_help(form.seats) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.price) }}
+				{{ form_errors(form.price) }}
+				{{ form_widget(form.price) }}
+				{{ form_help(form.price) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.date) }}
+				{{ form_errors(form.date) }}
+				{{ form_widget(form.date) }}
+				{{ form_help(form.date) }}
+			</div>
+
+			<div class="rideDropDown profileModificationFormSection">
+				{{ form_label(form.rules) }}
+				{{ form_widget(form.rules) }}
+				{{ form_help(form.rules) }}
+			</div>
+
+
+			<button type="submit" class="btn">Submit</button>
+
+			{{ form_end(form) }}
+
+		</div>
+	</form>
+{% endblock %}

@@ -27,7 +27,9 @@ class Rule
     #[ORM\ManyToMany(targetEntity: Ride::class)]
     private Collection $rule;
 
-   
+    public function __toString(){
+        return $this->getName();
+    } 
 
     public function __construct()
     {

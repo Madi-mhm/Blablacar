@@ -54,6 +54,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Car::class, orphanRemoval: true)]
     private Collection $cars;
 
+    
+
 
     public function __construct()
     {
@@ -97,6 +99,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
+
+
 
     /**
      * @see UserInterface
