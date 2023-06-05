@@ -9,7 +9,8 @@
 
 				<div class="profileSectionUserName">
 					<div class="profilePic"></div>
-					<p>@mahdi_mhm</p>
+					<p>{{user.firstName}}</p>
+					<p class="userEmail">@{{user.email}}</p>
 				</div>
 
 				<div class="profileSectionLinks">
@@ -23,7 +24,7 @@
 							<p>Modify my car</p>
 						</div>
 					</a>
-					<a href="">
+					<a href="{{path('app_createAnnounce')}}">
 						<div class="profileLinks">
 							<p>Create an announce</p>
 						</div>

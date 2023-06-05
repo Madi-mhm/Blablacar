@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Car;
+use App\Entity\Ride;
+use App\Entity\Rule;
 use App\Form\ProfileModificationType;
+use App\Form\AnnounceType;
 use App\Form\CarModificationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,16 +15,26 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+
+
+
 
 
 
 class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
-    public function profile(): Response
+    public function profile(Request $request, EntityManagerInterface $entityManager): Response
     {
+
+        $userRepo = $entityManager->getRepository(User::class);
+        $userId = $this->getUser()->getId();
+        $user = $userRepo->find($userId);        
+
+
         return $this->render('profile/index.html.twig', [
-            'controller_name' => 'ProfileController',
+            'user' => $user,
         ]);
     }
 
@@ -88,4 +101,6 @@ class ProfileController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
 }

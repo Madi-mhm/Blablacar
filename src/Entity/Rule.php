@@ -31,7 +31,7 @@ class Rule
 
     public function __construct()
     {
-        $this->ride = new ArrayCollection();
+        $this->rides = new ArrayCollection();
         $this->rule = new ArrayCollection();
     }
 
@@ -79,23 +79,23 @@ class Rule
     /**
      * @return Collection<int, Ride>
      */
-    public function getRule(): Collection
+    public function getRides(): Collection
     {
-        return $this->rule;
+        return $this->rides;
     }
 
-    public function addRule(Ride $rule): self
+    public function addRide(Ride $ride): self
     {
-        if (!$this->rule->contains($rule)) {
-            $this->rule->add($rule);
+        if (!$this->rides->contains($ride)) {
+            $this->rides->add($ride);
         }
 
         return $this;
     }
 
-    public function removeRule(Ride $rule): self
+    public function removeRides(Ride $ride): self
     {
-        $this->rule->removeElement($rule);
+        $this->rides->removeElement($ride);
 
         return $this;
     }
