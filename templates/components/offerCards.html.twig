@@ -1,47 +1,51 @@
-<a class="cardsLink" href="{{path('details_page', {'id': product.id}) }}"> 
+<a class="cardsLink" href="{{path('details_page', {'id': product.id}) }}">
 
-<div class="cardContainer">
-    <div class="card">
+	<div class="cardContainer">
+		<div class="card">
 
-        <div class="upSideLeft">  
-            <div class="departure"><span class="departLocation"></span>{{product.departure}}</div>      
-            <div class="destination"><span class="destinationLocation"></span>{{product.destination}}</div>  
-            <div class="places">{{product.seats}} seats disponible</div>          
-        </div>
+			<div class="upSideLeft">
+				<div class="departure">
+					<span class="departLocation"></span>
+					{{product.departure}}</div>
+				<div class="destination">
+					<span class="destinationLocation"></span>
+					{{product.destination}}</div>
+				<div class="places">{{product.seats}}
+					seats disponible</div>
+			</div>
 
-        <div class="upSideRight">
-            <div class="date">{{ product.createdString }}</div>  
+			<div class="upSideRight">
+				<div class="date">{{ product.createdString }}</div>
 
-            <div class="profile">
+				<div class="profile">
 
-                <div class="account">
-                
-                    <div class="profilPic"></div>
+					<div class="account">
 
-                    <div class="userName">
-                        <p>{{product.driver.firstName}} {{product.driver.lastName | upper}}</p>
-                        <p>⭐ 4/7</p>
-                    </div>      
+						<div class="profilPic"></div>
 
-                </div>
+						<div class="userName">
+							<p>{{product.driver.firstName}}
+								{{product.driver.lastName | upper}}</p>
+							<p>⭐ 4/7</p>
+						</div>
 
-                <p class="price">{{product.price}}$</p>
-            </div>
+					</div>
 
-        </div>   
+					<p class="price">{{product.price}}$</p>
+				</div>
 
-    </div>
-    
-    <div class="downSide">
-        <ul>
-            {% for rule in product.rules %}
-               <li> {{rule.name}}</li>
-            {%endfor%}            
-        </ul>
-    </div>
+			</div>
 
-</div></a>
+		</div>
 
+		<div class="downSide">
+			<ul>
+				{% for rule in product.rules %}
+					<li>
+						{{rule.name}}</li>
+					{%endfor%}
+				</ul>
+			</div>
 
-
-
+		</div>
+	</a>

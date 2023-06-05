@@ -22,14 +22,5 @@ class BookingController extends AbstractController
     }
 
 
-    // #[Route('/offers/chambery', name: 'app_offers_chambery')]
-    // public function offersChambery(): Response
-    // {
-    //     return $this->render('app/offersChambery.html.twig', [
-    //         'controller_name' => "Les offres à Chambery",
-    //     ]);
-    // }
-
-
 
 }

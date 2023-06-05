@@ -33,6 +33,7 @@ class RideController extends AbstractController
             $createdString = $product->getCreated()->format('d-m-Y');
             $product->createdString = $createdString;
         }
+    
 
         return $this->render('pages/booking.html.twig', [
             'controller_name' => 'Booking Page',
