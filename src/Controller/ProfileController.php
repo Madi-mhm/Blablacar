@@ -8,6 +8,7 @@ use App\Entity\Ride;
 use App\Entity\Rule;
 use App\Form\ProfileModificationType;
 use App\Form\CreateAnnounceType;
+use App\Form\CarRulesType;
 use App\Form\CarModificationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,7 +101,7 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profile/createAnnounce', name: 'app_createAnnounce')]
-    public function index(Request $request, EntityManagerInterface $entityManagerInterface): Response
+    public function createAnnounce(Request $request, EntityManagerInterface $entityManagerInterface): Response
     {
         $ride = new Ride();
 
@@ -109,26 +110,10 @@ class ProfileController extends AbstractController
 		// Ecoute la soumission du formulaire
 		$form->handleRequest($request);
 
-		// Condition valide lorsque le formulaire est soumis et valide
-        
-		// Persiste les données du formulaire dans l'entité Demo
-        // $ride = $form->getData();
-        
-        // $ride->setCreated(new \DateTime());
-        
-        // Exécuter la logique que vous souhaitez
-        // par exemple enregistrer la nouvelle entité en base de données
-
-
-        
         if($form->isSubmitted() && $form->isValid()){
 
             $ride = $form->getData();
-
-          
             $ride->setCreated(new \DateTime());
-
-             
 
             $userId = $this->getUser()->getId();
             $driver = $entityManagerInterface->getRepository(User::class)->find($userId);
@@ -138,8 +123,36 @@ class ProfileController extends AbstractController
             $entityManagerInterface->flush();
         }
 
-
         return $this->render('profile/createAnnounce.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/profile/carRules', name: 'app_carRules')]
+    public function carRules(Request $request, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $rule = new Rule();
+
+        $form = $this->createForm(carRulesType::class, $rule);
+
+		// Ecoute la soumission du formulaire
+		$form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $rule = $form->getData();
+           
+            $userId = $this->getUser()->getId();
+            $author = $entityManagerInterface->getRepository(User::class)->find($userId);
+            $rule->setAuthor($author);
+
+
+            $entityManagerInterface->persist($rule);
+            $entityManagerInterface->flush();
+
+        }
+
+        return $this->render('profile/carRules.html.twig', [
             'form' => $form->createView(),
         ]);
     }

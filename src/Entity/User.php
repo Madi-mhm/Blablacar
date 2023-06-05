@@ -55,7 +55,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $cars;
 
     
-
+    public function __toString(){
+        return $this->getFirstName();
+    } 
 
     public function __construct()
     {

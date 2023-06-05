@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	CarRules
+{% endblock %}
+{% block body %}
+	<form class="profileModificationForm" method="POST" action="{{path('app_carRules')}}">
+
+
+		<div class="formContainer">
+
+			<h1>Rules for your car</h1>
+
+			{{ form_start(form) }}
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.name) }}
+				{{ form_errors(form.name) }}
+				{{ form_widget(form.name) }}
+				{{ form_help(form.name) }}
+			</div>
+
+			<div class="profileModificationFormSection">
+				{{ form_label(form.description) }}
+				{{ form_errors(form.description) }}
+				{{ form_widget(form.description) }}
+				{{ form_help(form.description) }}
+			</div>
+			<button type="submit" class="btn">Submit</button>
+
+			{{ form_end(form) }}
+
+		</div>
+	</form>
+{% endblock %}

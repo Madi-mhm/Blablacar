@@ -25,7 +25,7 @@ class Rule
     private ?User $author = null;
 
     #[ORM\ManyToMany(targetEntity: Ride::class)]
-    private Collection $rule;
+    private Collection $rides;
 
     public function __toString(){
         return $this->getName();
