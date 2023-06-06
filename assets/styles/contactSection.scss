@@ -1,0 +1,128 @@
+.contactSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    .contactSectionContainer{
+        width: 30rem;
+        height: 20rem;
+        margin: 5rem 0 10rem 0;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        
+        .contactSectionHeader{
+            box-sizing: border-box;
+            background-color: #2ED1FF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem ;
+            border-radius: 10px 10px 0 0;
+            
+            .contactSectionUserInfo{
+
+                p{
+                    margin: 0;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: white;
+                }
+            }
+
+            .contactSectionProfile{
+                width: 3.5rem;
+                height: 3.5rem;
+                background-color: black;
+                border-radius: 50%;
+            }
+
+        }
+    
+        .contactsectionbody{
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            
+        
+            .contactsectionleftbody{
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h3{
+                    font-weight: 500;
+                    font-size: 18px;
+                }
+
+                p{
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin: 0;
+                    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+                    width: 2rem;
+                    height: 2rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    padding: 5px;
+                }
+
+                .contactSectionReserve{
+                    background-color: #2ED1FF;
+                    width: 6rem;
+                    height: 2.3rem;
+                    border-radius: 6px;
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 2rem;
+                    transition: 250ms;
+
+                    &:hover{
+                        transform: scale(1.03);
+                        background-color: #01a0cc;
+                    }
+
+                }
+            }
+        
+            .contactsectionrightbody{
+                width: 50%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h3{
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+        
+                h4{
+                    margin: 0;
+                    font-weight: 500;
+                }
+
+                p{
+                    font-size: 15px;
+                    font-weight: 400;
+                    margin: 0 0 15px 0;
+                }
+            }
+        }
+
+    }
+
+    
+    
+}
+
+
+

@@ -80,10 +80,10 @@
 			</div>
 
 			<div class="detailsContact">
-				<a>
+				<a href="{{path('app_userContact', {'id': product.id})}}">
 					<div></div>
 				</a>
-				<a class="contactLink" href="{{path('app_login')}}">
+				<a class="contactLink" href="{{path('app_userContact', {'id': product.id})}}">
 					<p>CONTACT
 						{{product.driver.firstName}}
 						{{product.driver.lastName | upper}}</p>

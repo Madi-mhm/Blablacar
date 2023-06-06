@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="contactSection">
+		<div class="contactSectionContainer conic-demo">
+			<div class="contactSectionHeader">
+				<div class="contactSectionUserInfo">
+					<p>
+						{{user.firstName}}
+						{{user.lastName | upper}}
+					</p>
+				</div>
+				<div class="contactSectionProfile"></div>
+			</div>
+
+			<div class="contactsectionbody">
+
+				<div class="contactsectionleftbody">
+					<h3>Available seats:</h3>
+					<p>{{product.seats}}</p>
+					<a>
+						<div class="contactSectionReserve">
+							Reserve a seat
+						</div>
+					</a>
+				</div>
+				<div class="contactsectionrightbody">
+					<h3>Contact:</h3>
+					<h4>E-mail:</h4>
+					<p>{{user.email}}</p>
+					<h4>Phone:</h4>
+					<p>{{user.phone}}</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

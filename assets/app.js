@@ -18,3 +18,4 @@ import './styles/cardsDetails.scss';
 import './styles/profile.scss';
 import './styles/profileModification.scss';
 import './styles/createAnnounce.scss';
+import './styles/contactSection.scss';
