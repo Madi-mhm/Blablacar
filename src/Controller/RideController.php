@@ -10,8 +10,7 @@ use App\Entity\Rule;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
+use Symfony\Component\Security\Core\Security;
 
 
 class RideController extends AbstractController
@@ -25,10 +24,12 @@ class RideController extends AbstractController
     }
 
     #[Route('/booking', name: 'booking_page')]
-    public function booking(EntityManagerInterface $entityManager): Response
+    public function booking(EntityManagerInterface $entityManager, Security $security): Response
     {
         $productsRepository = $entityManager->getRepository(Ride::class);
         $products = $productsRepository->findAll();
+        $currentUser = $security->getUser()->getId();
+
 
         foreach ($products as $product) {
             $createdString = $product->getCreated()->format('d-m-Y');
@@ -38,6 +39,7 @@ class RideController extends AbstractController
         return $this->render('pages/booking.html.twig', [
             'controller_name' => 'Booking Page',
             'products' => $products,
+            'currentUser' => $currentUser,
         ]);
     }   
 

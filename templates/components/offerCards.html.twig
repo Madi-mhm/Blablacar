@@ -1,6 +1,6 @@
-<a class="cardsLink" href="{{path('details_page', {'id': product.id}) }}">
+<a class="cardsLink" href="{{path('details_page', {'id': product.id}) }} ">
 
-	<div class="cardContainer">
+	<div class="cardContainer {% if app.user and product.driver.id == currentUser %}newClass{% endif %}">
 		<div class="card">
 
 			<div class="upSideLeft">

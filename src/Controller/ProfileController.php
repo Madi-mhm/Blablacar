@@ -153,24 +153,6 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    
-    // #[Route('/profile/myAnnounces', name: 'app_myAnnounces')]
-    // public function myAnnounces(Request $request, EntityManagerInterface $entityManagerInterface): Response
-    // {
-
-    //     $user = $this->getUser();
-        
-    //     $announceRepo = $entityManagerInterface->getRepository(Ride::class);
-    //     $announces = $announceRepo->findBy(['driver' => $user]);
-
-       
-    //     return $this->render('profile/myAnnounces.html.twig', [
-    //         'controller_name' => 'Booking Page',
-    //         'announces' => $announces,
-    //     ]);
-        
-    // }
-
 
     #[Route('/profile/myAnnounces', name: 'app_myAnnounces')]
     public function myAnnounce(EntityManagerInterface $entityManager, Security $security): Response
