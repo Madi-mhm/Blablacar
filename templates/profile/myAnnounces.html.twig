@@ -1,16 +1,15 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-
-{# {% block body %}
+{% block body %}
 	<div class="bodyDiv">
-
 		<div class="bodyContainer">
 
-			{% for announce in announces %}
-				{% include 'components/myAnnounceCards.html.twig' %}
+			{% for product in products %}
+				{% if product.driver.id == currentUser %}
+					{% include 'components/offerCards.html.twig' %}
+				{% endif %}
 			{% endfor %}
 
 		</div>
-
 	</div>
-{% endblock %} #}
+{% endblock %}

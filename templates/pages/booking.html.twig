@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="bodyDiv">
+	<div class="bodyDiv">
 
-        <div class="bodyContainer">
+		<div class="bodyContainer">
 
-            {% for product in products %}
-                {% include 'components/offerCards.html.twig' %}
-            {% endfor %}
+			{% for product in products %}
+				{% include 'components/offerCards.html.twig' %}
+			{% endfor %}
 
-        </div>
+		</div>
 
-    </div>
+	</div>
 {% endblock %}
