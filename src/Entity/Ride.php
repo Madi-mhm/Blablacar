@@ -194,4 +194,20 @@ class Ride
     }
 
 
+
+    
+
+    // seatsLeft
+
+    public function getSeatsLeft(): int
+    {
+        $totalSeats = $this->getSeats();
+        $reservedSeats = $this->getReservations()->count();
+        $seatsLeft = $totalSeats - $reservedSeats;
+
+        return $seatsLeft > 0 ? $seatsLeft : 0;
+    }
+
+   
+
 }

@@ -37,6 +37,7 @@ class Rule
         $this->rule = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -101,5 +102,8 @@ class Rule
 
         return $this;
     }
+
+
+
 
 }
