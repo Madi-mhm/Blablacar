@@ -17,12 +17,16 @@
 
 				<div class="contactsectionleftbody">
 					<h3>Available seats:</h3>
-					<p>{{product.seats}}</p>
-					<a href="{{path('app_reservation', {'id': product.id} )}}">
-						<div class="contactSectionReserve">
-							Reserve a seat
-						</div>
-					</a>
+					<p>{{seatsLeft}}</p>
+					{% if seatsLeft > 0 %}
+						<a href="{{path('app_reservation', {'id': product.id} )}}">
+							<div class="contactSectionReserve">
+								Reserve a seat
+							</div>
+						</a>
+					{% else %}
+						<span class="noSeatsError">No Seats available</span>
+					{% endif %}
 				</div>
 				<div class="contactsectionrightbody">
 					<h3>Contact:</h3>

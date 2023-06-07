@@ -34,6 +34,12 @@ class BookingController extends AbstractController
         foreach ($products as $product) {
             $createdString = $product->getCreated()->format('d-m-Y');
             $product->createdString = $createdString;
+
+
+            $totalSeats = $product->getSeats();
+            $reservedSeats = $product->getReservations()->count();
+            $seatsLeft = $totalSeats - $reservedSeats;
+            $product->seatsLeft = $seatsLeft;
         }
 
         return $this->render('pages/booking.html.twig', [
@@ -68,17 +74,22 @@ class BookingController extends AbstractController
         $productsRepository = $entityManager->getRepository(Ride::class);
         $product = $productsRepository->findOneBy(['id' => $id]);
 
-        if(!$product){
-            throw $this->createNotFoundException('Product not found');
-        }
+        // Get the total number of seats for the ride
+        $totalSeats = $product->getSeats();
+
+        // Get the number of reserved seats for the ride
+        $reservedSeats = $product->getReservations()->count();
+
+        // Calculate the number of seats left
+        $seatsLeft = $totalSeats - $reservedSeats;
 
         $user = $product->getDriver();
-
 
         return $this->render('components/contactInfo.html.twig', [
             'controller_name' => "Détail d'une offre",
             'user' => $user,
             'product' => $product,
+            'seatsLeft' => $seatsLeft,
         ]);
     }
 
@@ -90,10 +101,8 @@ class BookingController extends AbstractController
 
         $rideRepo = $entityManager->getRepository(Ride::class);
         $ride = $rideRepo->findOneBy(['id' => $id]);
-
         
         $user = $this->getUser();
-
 
         $reservation = new Reservation();
         $reservation->setConfirmed(true);
