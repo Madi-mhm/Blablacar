@@ -18,17 +18,22 @@ class Reservation
     #[ORM\Column]
     private ?bool $confirmed = null;
 
-    #[ORM\OneToMany(mappedBy: 'reservation_ride', targetEntity: Ride::class)]
-    private Collection $ride;
+    // #[ORM\OneToMany(mappedBy: 'reservation_ride', targetEntity: Ride::class)]
+    // private Collection $ride;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations_ride')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Ride $ride = null;
+
 
     #[ORM\ManyToOne(inversedBy: 'user_reservation')]
     private ?User $passenger = null;
 
 
-    public function __construct()
-    {
-        $this->ride = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->ride = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -47,32 +52,14 @@ class Reservation
         return $this;
     }
 
-    /**
-     * @return Collection<int, Ride>
-     */
-    public function getRide(): Collection
+    public function getRide(): ?Ride
     {
         return $this->ride;
     }
 
-    public function addRide(Ride $ride): self
+    public function setRide(?Ride $ride): self
     {
-        if (!$this->ride->contains($ride)) {
-            $this->ride->add($ride);
-            $ride->setReservationRide($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRide(Ride $ride): self
-    {
-        if ($this->ride->removeElement($ride)) {
-            // set the owning side to null (unless already changed)
-            if ($ride->getReservationRide() === $this) {
-                $ride->setReservationRide(null);
-            }
-        }
+        $this->ride = $ride;
 
         return $this;
     }
@@ -89,4 +76,36 @@ class Reservation
         return $this;
     }
 
+
+    // /**
+    //  * @return Collection<int, Ride>
+    //  */
+    // public function getRide(): Collection
+    // {
+    //     return $this->ride;
+    // }
+
+    // public function addRide(Ride $ride): self
+    // {
+    //     if (!$this->ride->contains($ride)) {
+    //         $this->ride->add($ride);
+    //         $ride->setReservationRide($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeRide(Ride $ride): self
+    // {
+    //     if ($this->ride->removeElement($ride)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($ride->getReservationRide() === $this) {
+    //             $ride->setReservationRide(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
+   
 }

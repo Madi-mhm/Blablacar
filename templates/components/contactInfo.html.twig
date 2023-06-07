@@ -18,7 +18,7 @@
 				<div class="contactsectionleftbody">
 					<h3>Available seats:</h3>
 					<p>{{product.seats}}</p>
-					<a>
+					<a href="{{path('app_reservation', {'id': product.id} )}}">
 						<div class="contactSectionReserve">
 							Reserve a seat
 						</div>

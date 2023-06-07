@@ -41,6 +41,10 @@ class Ride
     #[ORM\ManyToMany(targetEntity: rule::class, inversedBy: 'rides')]
     private Collection $rules;
 
+    #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
+
     public function __construct()
     {
         $this->rules = new ArrayCollection();
@@ -159,4 +163,35 @@ class Ride
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setRide($this);
+        }
+
+        return $this;
+    }
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getRide() === $this) {
+                $reservation->setRide(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }
