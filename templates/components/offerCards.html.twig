@@ -3,6 +3,10 @@
 	<div class="cardContainer {% if app.user and product.driver.id == currentUser %}newClass{% endif %}">
 		<div class="card">
 
+
+			<div class="cardsSettingIcon"></div>
+
+
 			<div class="upSideLeft">
 				<div class="departure">
 					<span class="departLocation"></span>
@@ -15,6 +19,7 @@
 			</div>
 
 			<div class="upSideRight">
+
 				<div class="date">{{ product.createdString }}</div>
 
 				<div class="profile">

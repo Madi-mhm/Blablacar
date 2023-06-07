@@ -28,3 +28,19 @@ class CreateAnnounceType extends AbstractType
         ]);
     }
 }
+
+
+
+
+// , EntityType::class, [
+//     'class' => Rule::class,
+//     'multiple' => true, 
+//     'expanded' => true, 
+//     'choice_label' => 'name', 
+//     'by_reference' => false, 
+//     'query_builder' => function(EntityRepository $er) use ($user){
+//         return $er->createQueryBuilder('r')
+//         ->where('r.author = :user')
+//         ->setParameter('user', $user)
+//     }
+// ]
