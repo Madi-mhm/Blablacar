@@ -85,12 +85,22 @@ class ProfileController extends AbstractController
     {
 
         // Identify user's ID for future actions 
-        $userRepo = $entityManager->getRepository(User::class);
-        $user = $userRepo->find($this->getUser()->getId());
+        $user = $this->getUser();
+        $car = new Car;
 
-        $car = new Car();
         $form = $this->createForm(carModificationType::class, $car);
         $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $car->setCreated(new \DateTime());
+            $car->setOwner($user);
+
+            $entityManager->persist($car);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_profile');            
+        }
 
         return $this->render('profile/carModification.html.twig', [
             'form' => $form->createView(),
