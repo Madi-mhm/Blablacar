@@ -3,8 +3,15 @@
 	<div class="cardContainer {% if app.user and product.driver.id == currentUser %}newClass{% endif %}">
 		<div class="card">
 
-
-			<div class="cardsSettingIcon"></div>
+			<div class="cardsDropDownDiv">
+				<div class="cardsDropdown">
+					<div class="cardsSettingIcon"></div>
+					<div class="cardsDropdown-content">
+						<p>Delete</p>
+						<p>Edit</p>
+					</div>
+				</div>
+			</div>
 
 
 			<div class="upSideLeft">
