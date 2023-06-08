@@ -41,7 +41,7 @@ class Ride
     #[ORM\ManyToMany(targetEntity: Rule::class, inversedBy: 'rides')]
     private Collection $rules;
 
-    #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class)]
+    #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class, cascade: ["remove"])]
     private Collection $reservations;
 
 
@@ -194,8 +194,6 @@ class Ride
     }
 
 
-
-    
 
     // seatsLeft
 

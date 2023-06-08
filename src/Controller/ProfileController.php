@@ -119,6 +119,9 @@ class ProfileController extends AbstractController
 
             $entityManagerInterface->persist($ride);
             $entityManagerInterface->flush();
+
+            return $this->redirectToRoute('booking_page');
+
         }
 
         return $this->render('profile/createAnnounce.html.twig', [

@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	<form class="profileModificationForm" method="POST" action="{{path('app_createAnnounce')}}">
+	<form class="profileModificationForm" method="POST" action="{{path('app_announceUpdate', {'id' : ride.id} )}}">
 
 
 		<div class="formContainer">

@@ -14,9 +14,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
 
-
-
-
 class BookingController extends AbstractController
 {
 
