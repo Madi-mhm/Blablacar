@@ -107,6 +107,7 @@ class ProfileController extends AbstractController
 		// Ecoute la soumission du formulaire
 		$form->handleRequest($request);
 
+
         if($form->isSubmitted() && $form->isValid()){
 
             $ride = $form->getData();

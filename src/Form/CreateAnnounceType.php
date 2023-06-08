@@ -30,8 +30,6 @@ class CreateAnnounceType extends AbstractType
 }
 
 
-
-
 // , EntityType::class, [
 //     'class' => Rule::class,
 //     'multiple' => true, 
@@ -41,6 +39,7 @@ class CreateAnnounceType extends AbstractType
 //     'query_builder' => function(EntityRepository $er) use ($user){
 //         return $er->createQueryBuilder('r')
 //         ->where('r.author = :user')
-//         ->setParameter('user', $user)
-//     }
+//         ->setParameter('user', $user);
+//     },
 // ]
+

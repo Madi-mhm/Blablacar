@@ -38,7 +38,7 @@ class Ride
     #[ORM\JoinColumn(nullable: false)]
     private ?User $driver = null;
 
-    #[ORM\ManyToMany(targetEntity: rule::class, inversedBy: 'rides')]
+    #[ORM\ManyToMany(targetEntity: Rule::class, inversedBy: 'rides')]
     private Collection $rules;
 
     #[ORM\OneToMany(mappedBy: 'ride', targetEntity: Reservation::class)]
