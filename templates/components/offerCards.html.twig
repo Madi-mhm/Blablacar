@@ -5,7 +5,7 @@
 			<div class="cardsDropdown">
 				<div class="cardsSettingIcon"></div>
 				<div class="cardsDropdown-content">
-					{% if app.user.id == product.driver.id %}
+					{% if app.user and app.user.id == product.driver.id %}
 						<p onclick="deleteItem()">
 							<a href="{{path('app_announceDelete' , {'id' : product.id}) }}">Delete</a>
 						</p>
@@ -15,11 +15,11 @@
 						<p>
 							<a href="{{path('details_page', {'id': product.id}) }}">Details</a>
 						</p>
-
 					{% else %}
 						<p>
 							<a href="{{path('details_page', {'id': product.id}) }}">Details</a>
 						</p>
+
 					{% endif %}
 
 				</div>

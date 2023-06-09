@@ -34,6 +34,7 @@ security:
     access_control:
         - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/offer/contact, roles: ROLE_USER }
+        - { path: ^/announce/edit/, roles: ROLE_USER }
         
 
 when@test:
