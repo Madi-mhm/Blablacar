@@ -1,6 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body%}
+<div class="searchSection">
+
+	<div class="searchSectionContainer">
+		<div class="departureSeachInput">
+			<form action="POST">
+				<input name="departure" placeholder="Departure" type="search">
+			</form>
+		</div>
+		<div class="destinationSeachInput">
+			<form action="POST">
+				<input name='destination' placeholder="Destination" type="search">
+				<button disabled>
+					<s>Search</s>
+				</button>
+
+			</form>
+		</div>
+	</div>
+</div>
 <div class="heroBanner">
 	<div class="heroBannerContainer">
 		<div class="heroBannerTextContents">
@@ -8,6 +27,7 @@
 			</br>
 			Your pick of rides at low prices.</h1>
 		<p>They are very soft and don't leave anywhere there is any pain. He likes to take care of his family.</p>
+
 		<div>
 			{% if not app.user %}
 				<a href="{{path('app_login')}}" class="homePageBtn">
@@ -20,24 +40,8 @@
 
 		</div>
 	</div>
+
 	<div class="heroBannerPic">
 		<div class="img"></div>
-	</div>
-</div></div><div class="searchSection">
-
-<div class="searchSectionContainer">
-	<div class="departureSeachInput">
-		<form action="POST">
-			<input name="departure" placeholder="Departure" type="search">
-		</form>
-	</div>
-	<div class="destinationSeachInput">
-		<form action="POST">
-			<input name='destination' placeholder="Destination" type="search">
-			<button disabled>
-				<s>Search</s>
-			</button>
-
-		</form>
 	</div>
 </div></div>{% endblock%}

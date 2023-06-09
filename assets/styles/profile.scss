@@ -33,8 +33,12 @@
                     width: 4rem;
                     height: 4rem;
                     border-radius: 50%;
-                    background-color: black;
                     margin-bottom: 1rem;
+                    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+                    background-image: url(../../public/medias/camera.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 50%;
                 }
 
                 p{
