@@ -5,7 +5,6 @@
     padding-bottom: 1rem;
     border-bottom: 0.5px solid black;
    
-
     .heroBannerContainer{
         display: flex;
         flex-direction: column;
@@ -14,7 +13,7 @@
         text-align: center;
         width: 60%;   
         height: 30rem;   
-        margin: 0 2rem;
+        margin: 0 2rem 5rem 2rem;
 
         .heroBannerTextContents{
 
@@ -85,21 +84,18 @@
             background-repeat: no-repeat; 
             
         }        
-
-       
     }
 
     @media (min-width : 900px) {
 
         .heroBannerContainer{
-            margin: 0 6rem;
             flex-direction: row;
             text-align: start;
             width: 100%;   
+            margin: 3rem 11rem 3rem 11rem;
 
             .heroBannerTextContents{
                 width: 50%;
-                
 
                 h1{
                     width: 80%;
@@ -113,15 +109,96 @@
             .heroBannerPic{
                 width: 50%;
                 height: 95%;
-                
-
             }
         }
+    }  
+}
+
+.searchSection{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 100%;
+    height: 10rem;
+    padding: 1rem;
+
+    .searchSectionContainer{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .departureSeachInput{
+            width: 50%;
+
+            form{
+
+                input{
+                    width: 80%;
+                    height: 2.5rem;
+                    outline: none;
+                    border-radius: 5px 0 0 5px;
+                    border: 1px rgba(0, 0, 0, 0.584) solid;
+                    padding: 0 10px;
+                    float: right;
+
+                    &:focus{
+                        border: 3px #2DBDFD solid;
+                    }
+                    margin-left: auto;
+                }
+            }
+
+            @media (min-width : 900px) {
+                width: 30%;
+            }
+        }
+
+        .destinationSeachInput{
+            width: 50%;
+
+            form{
+                display: flex;
+
+        
+                input{
+                    width: 80%;
+                    height: 2.5rem;
+                    outline: none;
+                    border: 1px rgba(0, 0, 0, 0.584) solid;
+                    padding: 0 10px;
+                    border-right: none;
+        
+                    &:focus{
+                        border: 3px #2DBDFD solid;
+                    }
+                }
+
+                button{
+                    background-color: #2DBDFD;
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 0 5px 5px 0;
+                    color: white;
+                    height: 2.5rem;
+                    cursor: pointer;
+                    transition: 250ms;
+                    border: 1px #2DBDFD solid;
+
+                }
+            }
+            @media (min-width : 900px) {
+                width: 30%;
+            }
+
+        }
+
+       
+            
+
         
 
+
+       
     }
-
-
-  
 }
 
