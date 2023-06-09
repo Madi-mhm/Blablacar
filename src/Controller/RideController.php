@@ -46,8 +46,15 @@ class RideController extends AbstractController
     #[Route('/announce/edit/{id}', name: 'app_announceUpdate')]
     public function updateCards(EntityManagerInterface $manager, Request $request , string $id, UrlGeneratorInterface $urlGenerator ): Response
     { 
+
         $rideRepo = $manager->getRepository(Ride::class);
         $ride = $rideRepo->find($id);
+        $rideOwner = $ride->getDriver()->getId();
+
+        if($rideOwner != $this->getUser()->getId()){
+            return $this->redirectToRoute('booking_page');
+
+        }
 
         $form = $this->createForm(EditAnnounceType::class, $ride);
         $form->handleRequest($request);
